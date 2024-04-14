@@ -1,13 +1,14 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI,{useNewUrlPParser:true, useUnifiedTopology:true});
+const connectionString =
+  process.env.MONGODB_URI || "your_connection_string_here";
 
-const db = mongoose.connection;
-db.on('error',console.error.bind(console,'connection error'));
+const connectionOptions = {};
 
-db.once('open',function(){
-    console.log('Connected')
-});
+mongoose
+  .connect(connectionString, connectionOptions)
+  .then(() => console.log("Database connected successfully"))
+  .catch((err) => console.error("Database connection error:", err));
 
 //Models
-require('./Category');
+require("./Category");
