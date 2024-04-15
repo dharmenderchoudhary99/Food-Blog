@@ -12,3 +12,4 @@ mongoose
 
 //Models
 require("./Category");
+require("./Recipe");

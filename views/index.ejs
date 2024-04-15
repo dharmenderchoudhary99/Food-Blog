@@ -29,7 +29,7 @@
     <% if(categories!='' ) { %>
 
         <% categories.forEach ( function(category, index) { %>
-            <a href="#" class="col text-center category__link">
+            <a href="/categories/<%- category.name %>" class="col text-center category__link">
                 <div class="category__img shadow">
                     <img src="images/<%- category.image%>" alt="<%- category.name%>" loading="lazy">
                 </div>

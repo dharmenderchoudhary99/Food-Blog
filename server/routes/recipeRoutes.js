@@ -7,6 +7,7 @@ App router
 */ 
 
 router.get('/', recipeController.homepage)
+router.get('/categories', recipeController.exploreCategories)
 
 
 module.exports = router;
