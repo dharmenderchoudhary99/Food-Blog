@@ -106,10 +106,47 @@ exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
     const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render("explore-latest", { title: "Cooking Blog- Explore Latest", recipe });
+    res.render("explore-latest", {
+      title: "Cooking Blog- Explore Latest",
+      recipe,
+    });
   } catch (error) {
     res.status(500).send({ message: error.message || "Error Occurred" });
   }
+};
+
+/*
+ *GET /explore-Random
+ *Explore Latest
+ */
+exports.exploreRandom = async (req, res) => {
+  try {
+    let count = await Recipe.find().countDocuments();
+
+    let random = Math.floor(Math.random() * count);
+    let recipe = await Recipe.findOne().skip(random).exec();
+    res.render("explore-random", {
+      title: "Cookig Blog - Explore Random",
+      recipe,
+    });
+
+    res.render("explore-latest", {
+      title: "Cooking Blog- Explore Latest",
+      recipe,
+    });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occurred" });
+  }
+};
+
+/*
+ *GET /explore-Random
+ *Explore Latest
+ */
+exports.submitRecipe = async (req, res) => {
+  res.ender("submit-recipe", {
+    title: "Cooking Blog - Submit Recipe",
+  });
 };
 
 // async function insertDummyCategoryData() {
