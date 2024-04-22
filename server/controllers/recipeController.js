@@ -140,14 +140,29 @@ exports.exploreRandom = async (req, res) => {
 };
 
 /*
- *GET /explore-Random
- *Explore Latest
+ *GET /submit-recipe
+ *Submit Recipe
  */
 exports.submitRecipe = async (req, res) => {
-  res.ender("submit-recipe", {
+  res.render("submit-recipe", {
     title: "Cooking Blog - Submit Recipe",
   });
 };
+
+
+/*
+ *POST /submit-recipe
+ *Submit Recipe
+ */
+ exports.submitRecipeOnPost = async (req, res) => {
+  res.redirect("submit-recipe");
+};
+
+
+
+
+
+
 
 // async function insertDummyCategoryData() {
 //   try {
